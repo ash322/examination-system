@@ -17,3 +17,5 @@ tmp/*
 /yarn-error.log
 
 .byebug_history
+tmp
+log

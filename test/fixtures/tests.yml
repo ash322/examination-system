@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  start_date: 2018-04-02
+  end_date: 2018-04-02
+  test_date: 2018-04-02
+  marks_obtained: 1.5
+  result: false
+  exam_id: 1
+
+two:
+  user_id: 1
+  start_date: 2018-04-02
+  end_date: 2018-04-02
+  test_date: 2018-04-02
+  marks_obtained: 1.5
+  result: false
+  exam_id: 1

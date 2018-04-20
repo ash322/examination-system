@@ -1,0 +1,21 @@
+<%= form_for @response do |f| %>
+
+  <div class="field">
+    <%= f.label :Test_Id %>
+    <%= f.text_field :test_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Question_Id %>
+    <%= f.text_field :question_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Responses %>
+    <%= f.text_field :response %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

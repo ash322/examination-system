@@ -1,0 +1,44 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1><p class="text-center"> Start Test </p></h1>
+    <%= form_for @test do |f| %>
+      <%= fields_for :questions do |q| %>
+
+        <div class="form-group">
+          <% id = params[:paper_id] %>
+          <% @question = Question.where(:paper_id => id) %>
+          <% @question.each_with_index do |t , index| %>
+            <strong> Question <%= index+1 %>: </strong>
+            <%= t.question %><br />
+            <% option = rand(0..50) %>
+            <strong> Options: </strong><br />
+            <% t.options.each_with_index do |o,opt| %>
+              <% opt+1 %>
+              <% if opt %2 == 0%>
+                <br />
+              <% end %>
+              <span class="col-sm-4">
+                <tr><td>
+                  <input type= "radio"  name= "question[<%= option %>] " id= "question_option__<%= option %>" >
+                  <%= o.body %>
+                </td></tr>
+              </span>
+            <% end %>
+            <br /><br />
+          <% end %>
+        </div>
+      <% end %>
+
+      <div class="actions">
+        <p class="text-center">
+          <input type= "submit" class= "btn btn-danger" name= "commit" value= "End Test" data-disable-with= "End Test">
+        </p>
+      </div>
+    <% end %>
+  </div>
+</body>

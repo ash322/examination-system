@@ -1,0 +1,13 @@
+<h1>Listing Options</h1>
+
+<table>
+  <tr>
+    <th>Body</th>
+  </tr>
+  <% @option.each do |o| %>
+    <tr>
+      <td><%= o.body %></td>
+      <td><%= link_to 'Show', option_path(o) %></td>
+    </tr>
+  <% end %>
+</table>

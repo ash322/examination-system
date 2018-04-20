@@ -1,0 +1,33 @@
+<h1> New  Question </h1>
+
+<%= form_for @question do |f| %>
+  <div class= "field" >
+    <%= f.label :Exam_Id %>
+    <%= f.text_field :paper_id %>
+  </div>
+
+  <div class= "field" >
+    <%= f.label :Body %>
+    <%= f.text_field :question %>
+  </div>
+
+  <div class= "field" >
+    <%= f.label :Total_marks %>
+    <%= f.text_field :total_marks %>
+  </div>
+
+ Options:
+
+  <%= f.fields_for :options  do |o|%>
+    <div class= "field" id=add_new_option>
+      <%= radio_button_tag "question[correct_option]" , o.index , @question.options.ids %>
+      <%= o.text_field :body %>
+    </div>
+  <% end %>
+
+  <%= link_to 'add_option',questions_add_option_path , id: "new_link" , remote: true %>
+
+  <div class= "actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,28 @@
+<h1>Manage roles</h1>
+<table>
+  <tr>
+    <th> Fname </th>
+    <th> Lname </th>
+    <th> Contact </th>
+    <th> Email </th>
+    <th> Roles </th>
+  </tr>
+
+  <% @user.each do |user| %>
+    <tr>
+      <td><%= user.fname %></td>
+      <td><%= user.lname %></td>
+      <td><%= user.contact %></td>
+      <td><%= user.email %></td>
+      <td>
+        <%= form_for user,:url=>"update_roles/#{user.id}" do |f| %>
+          <%= select_tag( "role_ids[]",
+            options_for_select( Role.all.map{ |c| [c.name, c.id]},
+            user.role_ids),
+            multiple: true,  placeholder: "Roles",size: 3)%>
+          <%= f.submit  %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>

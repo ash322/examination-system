@@ -1,0 +1,33 @@
+<p>
+  <strong> Exam_id: </strong>
+  <% id_a = @question.id  %>
+  <% name_p = Question.find(id_a) %>
+  <%= name_p.paper.name %>
+</p>
+
+<p>
+  <strong> Body: </strong>
+  <%= @question.question %>
+</p>
+
+<p>
+  <strong> Total_marks: </strong>
+  <%= @question.total_marks %>
+</p>
+
+<p>
+  <strong> Correct Options: </strong>
+  <% correctOption = @question.options.find(@question.correct_option_id) %>
+  <%= correctOption.body %>
+</p>
+
+<p>
+  <strong> Options: </strong>
+  <% @question.options.each do |t| %>
+    <%= t.body %>
+  <% end %>
+
+</p>
+
+<%= link_to 'Edit', edit_question_path(@question) %> |
+<%= link_to 'Back',questions_path %>

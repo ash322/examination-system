@@ -1,0 +1,9 @@
+<div class="field">
+
+  <% option = rand(0..50) %>
+  <input type= "radio" name= "question[correct_option]" id= "question_correct_<%= option %>" value= <%= option %>>
+
+  <input type= "text" name= "question[options_attributes][<%= option %>][body]"
+   id= "question_options_attributes_<%= option %>_body">
+  <br>
+</div>
