@@ -18,12 +18,13 @@ class TestsController < ApplicationController
     @test = Test.new
     @test.start_date = Date.today.to_s
     @test.test_date = Date.today.to_s
-    #@test.exam_id = params[:paper_id]
+    @test.exam_id = params[:paper_id]
+
   end
 
   def create
-    @test.user_id = current_user.id
     @test = Test.new#(test_params)
+    @test.user_id = current_user.id
     @test.end_date = Date.today.to_s
     @test.save
     redirect_to @test
