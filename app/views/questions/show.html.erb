@@ -1,8 +1,8 @@
 <p>
   <strong> Exam_id: </strong>
-  <% id_a = @question.id  %>
-  <% name_p = Question.find(id_a) %>
-  <%= name_p.paper.name %>
+  <% id_a = @question.paper_id  %>
+  <% name_p = Paper.where(:id=>id_a) %>
+  <%= name_p.name %>
 </p>
 
 <p>
