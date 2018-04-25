@@ -1,5 +1,4 @@
 class QuestionsController < ApplicationController
-
   load_and_authorize_resource
 
   def index
@@ -23,14 +22,22 @@ class QuestionsController < ApplicationController
   end
 
   def create
-
     @question = Question.new(question_params)
-    @question.save
+    @question.paper_id = params[:papers]
+    #@question.build_correct_option
     option = params[:question][:correct_option]
     correct_option = params[:question][:options_attributes][option][:body]
-    @question.correct_option_id = @question.options.where(body: correct_option).first.id
-    @question.save
-    redirect_to @question
+    @question.correct_option = @question.options.select{ |a| a.body == correct_option }.first
+
+    respond_to do |format|
+      if @question.save
+        flash[:notice] = "Question was sucessfully created"
+        format.html{ redirect_to @question }
+      else
+        flash[:error] = 'Error creating question'
+        format.html { render action: :new }
+      end
+    end
   end
 
   def show

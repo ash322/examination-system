@@ -1,34 +1,32 @@
-<head>
-<meta name="ViewPort" content="width=device-width,initial-scale=1" />
-</head>
-<h1> Listing Tests </h1>
+<div class="container">
+  <h1> Listing Tests </h1>
 
-<table>
-  <tr>
-    <th> User_id </th>
-    <th> Start_date </th>
-    <th> End_date </th>
-    <th> Test_date </th>
-    <th> Marks_obtained </th>
-    <th> Result </th>
-    <th> Paper_Id </th>
-  </tr>
-
-  <% @test.each do |t| %>
+  <table class="table table-light table-hover">
     <tr>
-      <td><%= t.user_id %></td>
-      <td><%= t.start_date %></td>
-      <td><%= t.end_date %></td>
-      <td><%= t.test_date %></td>
-      <td><%= t.marks_obtained %></td>
-      <td><%= t.result %></td>
-      <td><%= t.exam_id %></td>
-      <td><%= link_to 'Show', test_path(t) %></td>
-      <td><%= link_to 'Edit', edit_test_path(t) %></td>
-      <td><%= link_to 'Destroy', t , method: :delete , data: { confirm: 'Are you sure?' } %></td>
+      <th> User_id </th>
+      <th> Start_date </th>
+      <th> End_date </th>
+      <th> Test_date </th>
+      <th> Marks_obtained </th>
+      <th> Result </th>
+      <th> Paper_Id </th>
     </tr>
-  <% end %>
-</table>
-<br/>
 
-<%= link_to 'New  Test', tests_welcome_path %>
+    <% @test.each do |t| %>
+      <tr>
+        <td><%= t.user_id %></td>
+        <td><%= t.start_date %></td>
+        <td><%= t.end_date %></td>
+        <td><%= t.test_date %></td>
+        <td><%= t.marks_obtained %></td>
+        <td><%= t.result %></td>
+        <td><%= t.exam_id %></td>
+        <td><%= link_to 'Show', test_path(t) %></td>
+        <td><%= link_to 'Edit', edit_test_path(t) %></td>
+        <td><%= link_to 'Destroy', t , method: :delete , data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </table>
+  <br/>
+  <%= link_to 'New  Test', tests_welcome_path %>
+</div>

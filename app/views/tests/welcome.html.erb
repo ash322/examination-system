@@ -1,8 +1,3 @@
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-</head>
-
 <body>
   <div class= "container" >
     <strong><p class= "text-center"> Welcome!! </p></strong>
@@ -13,19 +8,18 @@
 
     <div class= "jumbotron" >
       <h1><p class= "text-danger" >Rules.</p></h1>
-      <p class= "text-primary" >1.You should not try to switch your browser.</p>
-      <p class= "text-warning" >2.Don't try to peep around.</p>
-      <p class= "text-danger" >3.Don't cheat.</p>
+      <p>1.You should not try to switch your browser.</p>
+      <p>2.Don't try to peep around.</p>
+      <p>3.Don't cheat.</p>
     </div>
 
 
       <%= form_for @test,:url=>"process_welcome" do |t| %>
-        <div class="dropdown">
-          <P>
-            Please select your Exam.
-            <%= select_tag("papers[]",options_for_select(Paper.all.map{ |c| [c.name,c.id]}))%></P>
-        </div>
 
+          <button type="button" class="btn btn-primary" data-toggle="dropdown">
+            Please select your exam
+            <%= select_tag("papers",options_for_select(Paper.all.map{ |c| [c.name,c.id]}), class: "btn btn-primary", style: "background-color:white;color:black")%>
+            </button>
           <p class= "text-center">
             <input type="submit" class="btn btn-success" name="commit" value="Start Test" data-disable-with="Start Test">
           </p>

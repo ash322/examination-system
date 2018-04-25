@@ -1,30 +1,23 @@
-<head>
-  <style>
-    table, th, td {
-    border: 2px solid orange;}
-  </style>
-</head>
-
-<h1> Listing Responses </h1>
-
-<table>
-  <tr>
-    <th> TestId </th>
-    <th> QuestionId </th>
-    <th> Responses </th>
-  </tr>
-
-  <% @response.each do |r| %>
+<div class="container">
+  <h1> Listing Responses </h1>
+  <table class="table table-light table-hover">
     <tr>
-      <td><%= r.test_id %></td>
-      <td><%= r.question_id %></td>
-      <td><%= r.response %></td>
-      <td><%= link_to 'Show', response_path(r) %></td>
-      <td><%= link_to 'Edit', edit_response_path(r) %></td>
-      <td><%= link_to 'Destroy', r, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <th> TestId </th>
+      <th> QuestionId </th>
+      <th> Responses </th>
     </tr>
-  <% end %>
-</table>
-<br />
 
-<%= link_to 'New  Response', new_response_path %>
+    <% @response.each do |r| %>
+      <tr>
+        <td><%= r.test_id %></td>
+        <td><%= r.question_id %></td>
+        <td><%= r.response %></td>
+        <td><%= link_to 'Show', response_path(r) %></td>
+        <td><%= link_to 'Edit', edit_response_path(r) %></td>
+        <td><%= link_to 'Destroy', r, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </table>
+  <br />
+  <%= link_to 'New  Response', new_response_path %>
+</div>
