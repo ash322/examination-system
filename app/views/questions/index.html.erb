@@ -1,17 +1,17 @@
 <div class="container">
   <h1> Listing Questions </h1>
-  <table class="table table-light table-hover">
+  <table class="table table-light table-hover table-sm">
+    <thead class="thead-dark">
     <tr>
       <th> Exam_id </th>
       <th> Body </th>
       <th> Total_Marks </th>
+      <th colspan="3"> Actions </th>
     </tr>
 
     <% @question.each do |q| %>
       <tr>
-        <td><% id = q.id  %>
-        <% na_me=Question.find(id) %>
-        <%= na_me.paper.name %></td>
+        <td><%= q.paper.name %></td>
         <td><%= q.question %></td>
         <td><%= q.total_marks %></td>
         <td><%= link_to 'Show', question_path(q) %></td>

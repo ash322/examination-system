@@ -1,29 +1,32 @@
 <div class="container">
   <h1> Listing Tests </h1>
 
-  <table class="table table-light table-hover">
+  <table class="table table-light table-hover table-sm">
+    <thead class="thead-dark">
     <tr>
-      <th> User_id </th>
-      <th> Start_date </th>
-      <th> End_date </th>
-      <th> Test_date </th>
-      <th> Marks_obtained </th>
+      <th> User email </th>
+      <th> Startdate </th>
+      <th> Enddate </th>
+      <th> Testdate </th>
+      <th> Marks Obtained </th>
       <th> Result </th>
-      <th> Paper_Id </th>
+      <th> Paper Id </th>
+      <th> Actions </th>
     </tr>
 
     <% @test.each do |t| %>
       <tr>
-        <td><%= t.user_id %></td>
-        <td><%= t.start_date %></td>
-        <td><%= t.end_date %></td>
-        <td><%= t.test_date %></td>
+        <td><%= current_user.email %></td>
+        <%# sdate = t.start_date.to_s %>
+        <%#=DateTime.parse(t.start_date.to_s).strftime("%B %d, %Y") %>
+        <%#=  t.start_date.to_time.strftime(' %a, %b %d') %>
+        <td><%= t.start_date.to_time.strftime(' %a, %b %d') %></td>
+        <td><%= t.end_date.to_time.strftime(' %a, %b %d') %></td>
+        <td><%= t.test_date.to_time.strftime(' %a, %b %d') %></td>
         <td><%= t.marks_obtained %></td>
         <td><%= t.result %></td>
-        <td><%= t.exam_id %></td>
+        <td><%= t.paper.name %></td>
         <td><%= link_to 'Show', test_path(t) %></td>
-        <td><%= link_to 'Edit', edit_test_path(t) %></td>
-        <td><%= link_to 'Destroy', t , method: :delete , data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </table>

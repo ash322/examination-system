@@ -8,12 +8,24 @@ class Question < ApplicationRecord
   has_one :test ,through: :paper
   belongs_to :paper
   belongs_to :correct_option, class_name: 'Option', optional: true
-
+  has_many :responses
   validate do
     check_options_number
+    check_unique_options
   end
 
   private
+
+  def check_unique_options
+    #options.body.unique
+    # options.each do |t|
+    #   validates :t.body, uniqueness: true
+    # end
+    b = options.map {|e| e.body}
+    if (b.count != b.uniq.count)
+    errors.add(:base, :no_duplicate_options, message:"no duplicate options")
+    end
+  end
 
   def options_count_valid?
     options.length >= OPTIONS_COUNT_MIN
@@ -21,7 +33,7 @@ class Question < ApplicationRecord
 
   def check_options_number
     unless options_count_valid?
-      errors.add(:base, :atleast_two_options, :count => OPTIONS_COUNT_MIN)
+      errors.add(:base, :atleast_two_options, :count => OPTIONS_COUNT_MIN, message:"must have 2 options")
     end
   end
 end

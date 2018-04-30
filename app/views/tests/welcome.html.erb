@@ -14,7 +14,8 @@
     </div>
 
 
-      <%= form_for @test,:url=>"process_welcome" do |t| %>
+      <%#= form_for @test,:url=>"process_welcome" do |t| %>
+      <%= form_with url: tests_process_welcome_path do |t| %>
 
           <button type="button" class="btn btn-primary" data-toggle="dropdown">
             Please select your exam

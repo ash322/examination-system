@@ -1,5 +1,6 @@
 class Test < ApplicationRecord
   belongs_to :paper, foreign_key: 'exam_id'
   has_many :questions, through: :paper
-  accepts_nested_attributes_for :questions
+  has_many :responses, dependent: :destroy
+  accepts_nested_attributes_for :responses
 end

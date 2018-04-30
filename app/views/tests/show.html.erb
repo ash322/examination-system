@@ -5,17 +5,17 @@
 
 <p>
   <strong> Start date: </strong>
-  <%= @test.start_date %>
+  <%= @test.start_date.to_time.strftime(' %a, %b %d') %>
 </p>
 
 <p>
   <strong> End date: </strong>
-  <%= @test.end_date %>
+  <%= @test.end_date.to_time.strftime(' %a, %b %d') %>
 </p>
 
 <p>
   <strong> Test date: </strong>
-  <%= @test.test_date %>
+  <%= @test.test_date.to_time.strftime(' %a, %b %d') %>
 </p>
 
 <p>

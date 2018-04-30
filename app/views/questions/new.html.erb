@@ -1,45 +1,45 @@
-<h1> New  Question </h1>
-<%= form_for @question do |f| %>
-  <% if @question.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
+<div class="container">
+  <h1> New  Question </h1>
+  <%= form_for @question do |f| %>
+    <% if @question.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
 
-      <ul>
-        <% @question.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% @question.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class= "field" >
+      <p> Select Exam
+        <%= select_tag("papers",options_for_select(Paper.all.map{ |c| [c.name,c.id]}))%>
+      </p>
+    </div>
+
+    <div class= "field" >
+      <%= f.label :Body %>
+      <%= f.text_field :question %>
+    </div>
+
+    <div class= "field" >
+      <%= f.label :Total_marks %>
+      <%= f.text_field :total_marks %>
+    </div>
+
+   Options:
+
+    <%= f.fields_for :options  do |o|%>
+      <div class= "field" id=add_new_option>
+      </div>
+    <% end %>
+
+    <%= link_to 'add_option',questions_add_option_path , id: "new_link" , remote: true %>
+
+    <div class= "actions">
+      <%= f.submit %>
     </div>
   <% end %>
-
-  <div class= "field" >
-    <p> Select Exam
-      <%= select_tag("papers",options_for_select(Paper.all.map{ |c| [c.name,c.id]}))%>
-    </p>
-  </div>
-
-  <div class= "field" >
-    <%= f.label :Body %>
-    <%= f.text_field :question %>
-  </div>
-
-  <div class= "field" >
-    <%= f.label :Total_marks %>
-    <%= f.text_field :total_marks %>
-  </div>
-
- Options:
-
-  <%= f.fields_for :options  do |o|%>
-    <div class= "field" id=add_new_option>
-      <%= radio_button_tag "question[correct_option]" , o.index , @question.options.ids %>
-      <%= o.text_field :body %>
-    </div>
-  <% end %>
-
-  <%= link_to 'add_option',questions_add_option_path , id: "new_link" , remote: true %>
-
-  <div class= "actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

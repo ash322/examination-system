@@ -1,8 +1,10 @@
 <div class="container">
   <h1> Listing roles </h1>
-  <table class="table table-light table-hover">
+  <table class="table table-light table-hover table-sm">
+    <thead class="thead-dark">
     <tr>
       <th> Role </th>
+      <th colspan="2"> Actions </th>
     </tr>
 
     <% @role.each do |r| %>
