@@ -40,7 +40,7 @@ class TestsController < ApplicationController
     for i in 0..length-1 do
       @test.responses[i].question_id = id = params[:test][:responses_attributes].keys[i]
       q = Question.find(id)
-      if @test.responses[i].response == q.correct_option_id.to_s # q.response=false
+      if @test.responses[i].response == q.correct_option_id.to_s
         @test.marks_obtained += q.total_marks
       end
     end

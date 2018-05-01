@@ -1,15 +1,15 @@
 <p>
-  <strong> Test Id: </strong>
-  <%= @response.test_id %>
+  <strong> Exam: </strong>
+  <%= @response.test.paper.name %>
 </p>
 
 <p>
-  <strong> Question Id: </strong>
-  <%= @response.question_id %>
+  <strong> Question: </strong>
+  <%= @response.question.question %>
 </p>
 
 <p>
-  <strong> Responses: </strong>
+  <strong> Response: </strong>
   <%= @response.response %>
 </p>
 

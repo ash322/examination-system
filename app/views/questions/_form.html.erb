@@ -1,29 +1,29 @@
-<%= form_for @question do |f| %>
-  <div class="field" >
-    <%= f.label :Exam_id %>
-    <%= f.text_field :paper_id %>
+<div class="jumbotron"
+  <%= form_for @question do |f| %>
+    <div class="form-row">
+    <div class="form-group col-md-6" >
+      <%= f.label :Exam_id %>
+      <%= f.text_field :paper_id, class: "form-control" %>
+
+      <%= f.label :Body %>
+      <%= f.text_field :question, class: "form-control" %>
+
+      <%= f.label :Total_marks %>
+      <%= f.text_field :total_marks, class: "form-control" %>
+    </div>
   </div>
-
-  <div class="field" >
-    <%= f.label :Body %>
-    <%= f.text_field :question %>
-  </div>
-
-  <div class="field" >
-    <%= f.label :Total_marks %>
-    <%= f.text_field :total_marks %>
-  </div>
-
- Options:
-
-  <%= f.fields_for :options  do |o|%>
-    <div class="field" id=add_option>
-      <%= radio_button_tag "question[correct_option]", o.index, @question.options.ids %>
-      <%= o.text_field :body %>
+    <div class="form-group">
+      Options:
+      <%= f.fields_for :options  do |o| %>
+        <div class="form-group" id=add_option>
+          <%= radio_button_tag "question[correct_option]", o.index, @question.options.ids %>
+          <%= o.text_field :body %>
+        </div>
+      <% end %>
+      <br   />
+      <div class="actions">
+        <%= f.submit class: "btn btn-primary" %>
+      </div>
     </div>
   <% end %>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

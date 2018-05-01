@@ -1,31 +1,33 @@
-<p>
-  <strong> Exam_id: </strong>
-  <%= @question.paper.name %>
-</p>
+<div class="container">
+  <p>
+    <strong> Exam: </strong>
+    <%= @question.paper.name %>
+  </p>
 
-<p>
-  <strong> Body: </strong>
-  <%= @question.question %>
-</p>
+  <p>
+    <strong> Question: </strong>
+    <%= @question.question %>
+  </p>
 
-<p>
-  <strong> Total_marks: </strong>
-  <%= @question.total_marks %>
-</p>
+  <p>
+    <strong> Total Marks: </strong>
+    <%= @question.total_marks %>
+  </p>
 
-<p>
-  <strong> Correct Options: </strong>
-  <% correctOption = @question.options.find(@question.correct_option_id) %>
-  <%= correctOption.body %>
-</p>
+  <p>
+    <strong> Correct Option: </strong>
+    <% correctOption = @question.options.find(@question.correct_option_id) %>
+    <%= correctOption.body %>
+  </p>
 
-<p>
-  <strong> Options: </strong>
-  <% @question.options.each do |t| %>
-    <%= t.body %>
-  <% end %>
+  <p>
+    <strong> Options: </strong>
+    <% @question.options.each do |t| %>
+      <%= t.body %>
+    <% end %>
 
-</p>
+  </p>
 
-<%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back',questions_path %>
+  <%= link_to 'Edit', edit_question_path(@question) %> |
+  <%= link_to 'Back',questions_path %>
+</div>

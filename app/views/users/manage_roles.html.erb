@@ -2,28 +2,34 @@
   <h1>Manage roles</h1>
   <table class="table table-light table-hover table-sm">
     <thead class="thead-dark">
-    <tr>
-      <th> Fname </th>
-      <th> Lname </th>
-      <th> Contact </th>
-      <th> Email </th>
-      <th> Roles </th>
-    </tr>
-
-    <% @user.each do |user| %>
       <tr>
-        <td><%= user.fname %></td>
-        <td><%= user.lname %></td>
-        <td><%= user.contact %></td>
-        <td><%= user.email %></td>
-        <td>
-          <%= form_for user,:url=>"update_roles/#{user.id}" do |f| %>
-            <%= select_tag( "role_ids[]",
-              options_for_select( Role.all.map{ |c| [c.name, c.id]},
-              user.role_ids),
-              multiple: true,  placeholder: "Roles",size: 3)%>
-            <%= f.submit  %>
-          <% end %>
+        <th> Fname </th>
+        <th> Lname </th>
+        <th> Contact </th>
+        <th> Email </th>
+        <th> Roles </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @user.each do |user| %>
+        <tr>
+          <td><%= user.fname %></td>
+          <td><%= user.lname %></td>
+          <td><%= user.contact %></td>
+          <td><%= user.email %></td>
+          <td>
+            <div class="container">
+              <%= form_for user,:url=>"update_roles/#{user.id}" do |f| %>
+                <%= select_tag( "role_ids[]",
+                  options_for_select( Role.all.map{ |c| [c.name, c.id]},
+                  user.role_ids),
+                  multiple: true,  placeholder: "Roles",size: 3)%>
+                <span class="text-center">
+                  <%= f.submit class: "btn btn-secondary" %>
+                </span>
+              <% end %>
+            </tbody>
+          </div>
         </td>
       </tr>
     <% end %>

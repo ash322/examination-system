@@ -1,36 +1,25 @@
-<p>
-  <strong> User id: </strong>
-  <%= @test.user_id %>
-</p>
-
-<p>
-  <strong> Start date: </strong>
-  <%= @test.start_date.to_time.strftime(' %a, %b %d') %>
-</p>
-
-<p>
-  <strong> End date: </strong>
-  <%= @test.end_date.to_time.strftime(' %a, %b %d') %>
-</p>
-
-<p>
-  <strong> Test date: </strong>
-  <%= @test.test_date.to_time.strftime(' %a, %b %d') %>
-</p>
-
-<p>
-  <strong> Marks obtained: </strong>
-  <%= @test.marks_obtained %>
-</p>
-
-<p>
-  <strong> Result: </strong>
-  <%= @test.result %>
-</p>
-
-<p>
-  <strong> Paper_Id: </strong>
-  <%= @test.exam_id %>
-</p>
+<div class="container">
+  <table class="table table-light table-sm">
+    <thead class="thead-dark">
+    <tr>
+      <th> User email </th>
+      <th> Start Date </th>
+      <th> End Date </th>
+      <th> Test Date </th>
+      <th> Marks Obtained </th>
+      <th> Result </th>
+      <th> Exam </th>
+    </tr>
+    <tr>
+      <td><%= @test.user.email %></td>
+      <td><%= @test.start_date.to_time.strftime(' %dth,%b %Y') %></td>
+      <td><%= @test.end_date.to_time.strftime(' %dth,%b %Y') %></td>
+      <td><%= @test.test_date.to_time.strftime(' %dth,%b %Y') %></td>
+      <td><%= @test.marks_obtained %></td>
+      <td><%= @test.result %></td>
+      <td><%= @test.paper.name %></td>
+    </tr>
+  </table>
+</div>
 
 <%= link_to 'Back',tests_path %>

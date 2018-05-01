@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
 
   def after_sign_in_path_for(resource)
-    current_user
+    tests_welcome_path
   end
   def after_sign_out_path_for(resource)
     users_path

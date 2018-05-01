@@ -2,13 +2,14 @@
   <h1> Listing Questions </h1>
   <table class="table table-light table-hover table-sm">
     <thead class="thead-dark">
-    <tr>
-      <th> Exam_id </th>
-      <th> Body </th>
-      <th> Total_Marks </th>
-      <th colspan="3"> Actions </th>
-    </tr>
-
+      <tr>
+        <th> Exam </th>
+        <th> Questions </th>
+        <th> Total Marks </th>
+        <th colspan="3"> Actions </th>
+      </tr>
+    </thead>
+    <tbody>
     <% @question.each do |q| %>
       <tr>
         <td><%= q.paper.name %></td>
@@ -19,7 +20,10 @@
         <td><%= link_to 'Destroy', q, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
+  </tbody>
   </table>
   <br/>
-  <%= link_to 'New  Question', new_question_path %>
+  <div class="text-center">
+  <a href=" /questions/new " class="btn btn-primary" role="button" aria-pressed="true">New Question</a>
+  </div>
 </div>

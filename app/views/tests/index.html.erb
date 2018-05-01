@@ -3,33 +3,32 @@
 
   <table class="table table-light table-hover table-sm">
     <thead class="thead-dark">
-    <tr>
-      <th> User email </th>
-      <th> Startdate </th>
-      <th> Enddate </th>
-      <th> Testdate </th>
-      <th> Marks Obtained </th>
-      <th> Result </th>
-      <th> Paper Id </th>
-      <th> Actions </th>
-    </tr>
-
-    <% @test.each do |t| %>
       <tr>
-        <td><%= current_user.email %></td>
-        <%# sdate = t.start_date.to_s %>
-        <%#=DateTime.parse(t.start_date.to_s).strftime("%B %d, %Y") %>
-        <%#=  t.start_date.to_time.strftime(' %a, %b %d') %>
-        <td><%= t.start_date.to_time.strftime(' %a, %b %d') %></td>
-        <td><%= t.end_date.to_time.strftime(' %a, %b %d') %></td>
-        <td><%= t.test_date.to_time.strftime(' %a, %b %d') %></td>
-        <td><%= t.marks_obtained %></td>
-        <td><%= t.result %></td>
-        <td><%= t.paper.name %></td>
-        <td><%= link_to 'Show', test_path(t) %></td>
+        <th> User email </th>
+        <th> Start Date </th>
+        <th> End Date </th>
+        <th> Test Date </th>
+        <th> Marks Obtained </th>
+        <th> Result </th>
+        <th> Exam </th>
       </tr>
-    <% end %>
+    </thead>
+    <tbody>
+      <% @test.each do |t| %>
+        <tr>
+          <td><%= t.user.email %></td>
+          <td><%= t.start_date.to_time.strftime(' %dth,%b %Y') %></td>
+          <td><%= t.end_date.to_time.strftime(' %dth,%b %Y') %></td>
+          <td><%= t.test_date.to_time.strftime(' %dth,%b %Y') %></td>
+          <td><%= t.marks_obtained %></td>
+          <td><%= t.result %></td>
+          <td><%= t.paper.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
   </table>
   <br/>
-  <%= link_to 'New  Test', tests_welcome_path %>
+  <div class="text-center">
+  <a href=" /tests/welcome " class="btn btn-primary" role="button" aria-pressed="true">New Test</a>
+  </div>
 </div>

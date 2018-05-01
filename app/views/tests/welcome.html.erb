@@ -1,29 +1,23 @@
 <body>
   <div class= "container" >
-    <strong><p class= "text-center"> Welcome!! </p></strong>
-
+    <strong><h1><p class= "text-center"> Welcome!! </p></h1></strong>
     <p>
       You are here at Ksolves,to have a great kickstart to your sucess ladder.
     </p>
-
     <div class= "jumbotron" >
       <h1><p class= "text-danger" >Rules.</p></h1>
       <p>1.You should not try to switch your browser.</p>
       <p>2.Don't try to peep around.</p>
       <p>3.Don't cheat.</p>
     </div>
-
-
       <%#= form_for @test,:url=>"process_welcome" do |t| %>
       <%= form_with url: tests_process_welcome_path do |t| %>
 
-          <button type="button" class="btn btn-primary" data-toggle="dropdown">
-            Please select your exam
-            <%= select_tag("papers",options_for_select(Paper.all.map{ |c| [c.name,c.id]}), class: "btn btn-primary", style: "background-color:white;color:black")%>
-            </button>
-          <p class= "text-center">
-            <input type="submit" class="btn btn-success" name="commit" value="Start Test" data-disable-with="Start Test">
-          </p>
+        Please select your exam
+        <%= select_tag("papers",options_for_select(Paper.all.map{ |c| [c.name,c.id]}), class: "btn btn-primary", style: "background-color:white;color:black")%>
+        <p class= "text-center">
+          <input type="submit" class="btn btn-success" name="commit" value="Start Test" data-disable-with="Start Test">
+        </p>
       <% end %>
   </div>
 </body>
