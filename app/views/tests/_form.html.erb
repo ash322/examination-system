@@ -1,5 +1,4 @@
 <div class="container">
-  <h1><p class="text-center"> Start Test </p></h1>
   <%= form_for @test do |f| %>
     <%= f.hidden_field :start_date, :value => Date.today  %>
     <%= f.hidden_field :paper_id, :value => params[:paper_id]  %>
@@ -9,28 +8,26 @@
         <%= question_object.question %>
         <% question_id = question_object.id %>
           </br>
-        <div class="col-6 col-md-4">
-          <%= f.fields_for :responses do |r| %>
-            <% option = question_object.options %>
-            <% option.each_with_index do |o,i| %>
+        <div class="col-6 col-md-6">
+          <%= f.fields_for :responses do |response_f| %>
+          <%= response_f.hidden_field :question_id, value: question_object.id %>
+
+            <% question_object.options.each_with_index do |option, i| %>
               <% i+1 %>
               <% if i %2 == 0%>
                 <br />
               <% end %>
               <span class="col-sm-6">
-                <input type="radio" value="<%=o.id%>" name="test[responses_attributes][<%=question_id%>][response]" id="test_responses_attributes_[<%=question_id%>]">
-                <%= r.label :response, o.body %>
+                <%= response_f.radio_button :response, option.id %>
+                <%= response_f.label :response, option.body %>
               </span>
             <% end %>
-            </br></br>
           <% end %>
         </div>
       </div>
     <% end %>
-    <div class="actions">
-      <p class="text-center">
-        <input type= "submit" class= "btn btn-danger" name= "commit" value= "End Test" data-disable-with= "End Test">
-      </p>
+    <div class="actions text-center">
+      <%= f.submit  "End Test", class: "btn btn-primary" %>
     </div>
   <% end %>
 </div>

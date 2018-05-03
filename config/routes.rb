@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-
+  root 'tests#welcome'
   get 'questions/add_option'
   post 'users/update_roles/:id' => 'users#update_roles'
   patch 'users/update_roles/:id' => 'users#update_roles'
+  #get '/tests/:id/result', to: 'tests#result'
 
   #get 'papers/:id/tests/new' => 'tests/new'
   devise_for :users, :controllers =>{registrations: 'registrations'}
@@ -14,8 +15,6 @@ Rails.application.routes.draw do
 
   #match  'papers/:paper_id/tests/start_test' ,to: 'tests/start_test', via: [:get]
   resources 'papers'   do
-    #resources 'tests', only: [:start_test]
-    #get 'tests/start_test'
     resources 'tests', except: [:edit, :update, :destroy]
     #get 'new_paper_test_path'
   end
@@ -33,7 +32,9 @@ Rails.application.routes.draw do
   resources 'roles'
   get 'roles/index'
 
-  resources 'users'
+  resources 'users' do
+    get '/tests/:id/result', to: 'tests#result'
+  end
   get 'users/index'
   get 'users/new'
 

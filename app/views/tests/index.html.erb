@@ -4,31 +4,35 @@
   <table class="table table-light table-hover table-sm">
     <thead class="thead-dark">
       <tr>
-        <th> User email </th>
+        <th> User Name </th>
         <th> Start Date </th>
         <th> End Date </th>
         <th> Test Date </th>
         <th> Marks Obtained </th>
         <th> Result </th>
         <th> Exam </th>
+        <th> Actions </th>
       </tr>
     </thead>
     <tbody>
       <% @test.each do |t| %>
         <tr>
-          <td><%= t.user.email %></td>
+          <td><%= t.user.fname + " " + t.user.lname %></td>
           <td><%= t.start_date.to_time.strftime(' %dth,%b %Y') %></td>
           <td><%= t.end_date.to_time.strftime(' %dth,%b %Y') %></td>
           <td><%= t.test_date.to_time.strftime(' %dth,%b %Y') %></td>
           <td><%= t.marks_obtained %></td>
-          <td><%= t.result %></td>
+          <td><%= t.result == true ? "Passed" : "Failed" %></td>
           <td><%= t.paper.name %></td>
+          <td>
+          <a title="show" href="/users/<%= t.user_id %>/tests/<%= t.id %>/result "><%=                   image_tag("visibility.svg",:style=>"max-width:20px;min-width:20px") %></a>
+          </td>
         </tr>
       <% end %>
     </tbody>
   </table>
-  <br/>
-  <div class="text-center">
-  <a href=" /tests/welcome " class="btn btn-primary" role="button" aria-pressed="true">New Test</a>
-  </div>
+    <br/>
+    <div class="text-center">
+      <a href=" /tests/welcome " class="btn btn-primary" role="button" aria-pressed="true">New Question</a></span>
+    </div>
 </div>

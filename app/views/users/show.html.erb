@@ -1,22 +1,24 @@
-<p>
-  <strong> Fname: </strong>
-  <%= @user.fname %>
-</p>
+<div class="container">
+  <p>
+    <strong> Fname: </strong>
+    <%= @user.fname %>
+  </p>
 
-<p>
-  <strong> Lname: </strong>
-  <%= @user.lname %>
-</p>
+  <p>
+    <strong> Lname: </strong>
+    <%= @user.lname %>
+  </p>
 
-<p>
-  <strong> Contact: </strong>
-  <%= @user.contact %>
-</p>
+  <p>
+    <strong> Contact: </strong>
+    <%= @user.contact %>
+  </p>
 
-<p>
-  <strong> Email: </strong>
-  <%= @user.email %>
-</p>
+  <p>
+    <strong> Email: </strong>
+    <%= @user.email %>
+  </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+  <%= link_to 'Edit', edit_user_path(@user) %> |
+  <%= link_to 'Back', users_path %>
+</div>

@@ -17,9 +17,15 @@
           <td><%= user.lname %></td>
           <td><%= user.contact %></td>
           <td><%= user.email %></td>
-          <td><%= link_to 'Show', user_path(user) if can? :read, User %></td>
-          <td><%= link_to 'Edit', edit_user_path(user) if can? :manage, User %></td>
-          <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }if can? :manage,User %></td>
+          <td>
+            <a title="show" href="/users/<%= user.id %>"><%=                   image_tag("visibility.svg",:style=>"max-width:20px;min-width:20px") %></a>
+          </td>
+          <td>
+            <a title="edit" href="/users/<%= user.id %>/edit"><%= image_tag("edit.svg",:style=>"max-width:20px;min-width:20px") %></a>
+          </td>
+          <td>
+            <a data-method="delete" title="delete" data-confirm="Are you sure?" href="/users/<%= user.id %>"><%= image_tag("delete.svg",:style=>"max-width:20px;min-width:20px") %></a>
+          </td>
         </tr>
       </tbody>
     <% end %>

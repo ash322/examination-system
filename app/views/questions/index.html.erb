@@ -1,5 +1,7 @@
 <div class="container">
-  <h1> Listing Questions </h1>
+  <h1> Listing Questions <span class="text-center">
+    <a href=" /questions/new " class="btn btn-primary float-right ma-rg" role="button" aria-pressed="true">New Question</a></span>
+  </h1>
   <table class="table table-light table-hover table-sm">
     <thead class="thead-dark">
       <tr>
@@ -15,15 +17,19 @@
         <td><%= q.paper.name %></td>
         <td><%= q.question %></td>
         <td><%= q.total_marks %></td>
-        <td><%= link_to 'Show', question_path(q) %></td>
-        <td><%= link_to 'Edit', edit_question_path(q) %></td>
-        <td><%= link_to 'Destroy', q, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <a title="show" href="/questions/<%= q.id %>"><%=                   image_tag("visibility.svg",:style=>"max-width:20px;min-width:20px") %></a>
+        </td>
+        <td>
+          <a title="edit" href="/questions/<%= q.id %>/edit"><%= image_tag("edit.svg",:style=>"max-width:20px;min-width:20px") %></a>
+        </td>
+        <td>
+          <a title="delete" data-method="delete" data-confirm="Are you sure?" href="/questions/<%= q.id %>"><%= image_tag("delete.svg",:style=>"max-width:20px;min-width:20px") %></a>
+        </td>
       </tr>
     <% end %>
   </tbody>
   </table>
   <br/>
-  <div class="text-center">
-  <a href=" /questions/new " class="btn btn-primary" role="button" aria-pressed="true">New Question</a>
-  </div>
+
 </div>

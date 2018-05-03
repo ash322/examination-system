@@ -22,6 +22,12 @@ class TestsController < ApplicationController
     @test.responses.build
   end
 
+  def result
+    @id=params[:id]
+    @test=Test.find(@id)
+    @question = @test.questions
+  end
+
   def create
     @test = Test.new(test_params)
     @test.exam_id = params[:test][:paper_id]
@@ -29,10 +35,12 @@ class TestsController < ApplicationController
     @test.start_date = params[:test][:start_date]
     @test.test_date = Date.today
     @test.end_date = Date.today
-    if params[:test][:responses_attributes] == nil
+
+    unless params[:test][:responses_attributes]
       flash[:error] = 'Attempt atleast a question'
-      render action: :new
+      render action: :index
     end
+
     length = params[:test][:responses_attributes].keys.length
 
     @test.marks_obtained = 0
@@ -48,7 +56,7 @@ class TestsController < ApplicationController
     percentage = (@test.marks_obtained*100)/(length*100)
     if percentage >=70
       @test.result = true
-    else
+    els.come
       @test.result = false
     end
 
@@ -58,7 +66,7 @@ class TestsController < ApplicationController
         format.html { redirect_to @test }
       else
         flash[:error] = 'Error completing Test'
-        format.html { render action: :index }
+        format.html { render action: :new }
       end
     end
   end

@@ -1,0 +1,52 @@
+<style>
+  .options{
+  margin-left: 2rem;
+  }
+  .a1{
+    padding-left:10px;
+    padding-right:0px
+  }
+  .a2{
+    padding-left: 0px;
+    padding-right: 10px;
+  }
+</style>
+<div class="container">
+  <%= @test.user.email %>
+  <br /></br>
+  <div class="jumbotron col-12 col-md-8">
+    <% @question.each_with_index do |q,index| %>
+      <strong><%= index+1 %>:</strong>
+      <%= q.question %>
+      <% response_obj = Response.find_response(@id,q.id) %>
+      <% response_obj.each do |t| %>
+        <% c = t.response %>
+
+
+        <div class="col-6 col-md-4">
+          <% q.options.each_with_index do |o,i| %>
+            <% i+1 %>
+            <% if i %2 == 0%>
+              <br />
+            <% end %>
+
+            <span class="col-2 a1">
+              <% if c == o.id.to_s %>
+              <%=image_tag("tick.jpeg",:style=>"max-width:15px;min-width:15px")%>
+              <% else %>
+              &nbsp &nbsp
+              <% end %>
+            </span>
+              <span class="col-4 a2">
+              <%= o.body %>
+            </span>
+          <% end %>
+        </div>
+        <div class="col-6 col-md-4">
+
+        </div>
+      <% end %>
+      <br />
+    <% end %>
+  </div>
+</div>

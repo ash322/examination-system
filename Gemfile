@@ -61,4 +61,8 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 
 gem 'cancancan', '~> 2.0'
 
+gem 'carrierwave', '~> 0.11.2'
+
+gem 'mini_magick', '~> 4.3'
+
 ruby '2.4.1'

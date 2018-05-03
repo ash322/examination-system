@@ -9,7 +9,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <style>
       a{
-        color: white;
+        color: black;
       }
       html {
         position: relative;
@@ -17,7 +17,7 @@
       }
       body { background-color: lightyellow;
         margin-bottom: 60px; }
-      .img-circle{
+        .img-circle{
         width: 50px;
         height: 50px;
         background-size: cover;
@@ -37,11 +37,28 @@
         height: 60px;
         background-color: #343a40;
       }
+      #navbarNavAltMarkup div a{
+        color:white;
+      }
+      a:hover {
+        color:black;
+        text-decoration: none;
+      }
+      #navbarDropdownimage a{
+        padding: 0px;
+        margin: 3px;
+      }
+      #navbardropdownimageposition{
+        margin-right: 5rem;
+      }
+      .ma-rg{
+      margin-top: 1rem;
+      }
     </style>
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-sm navbar-dark navbar-custom">
+    <nav class="navbar navbar-expand-sm navbar-custom">
       <a class="navbar-brand py-0"><%= image_tag("logo.png",:style=>"max-width:150px;min-width:150px") %></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle na#894ba5vigation">
         <span class="navbar-toggler-icon"></span>
@@ -49,11 +66,11 @@
 
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-item nav-link py-0"></a> <%= link_to 'User', users_path if can? :manage,User %></a>
+          <a class="nav-item nav-link py-0"><%= link_to 'User', users_path if can? :manage,User %></a>
 
           <a class="nav-item nav-link active py-0"><%= link_to ' Questions', questions_path if can? :manage,Question %> <span class="sr-only">(current)</span></a>
 
-          <a class="nav-item nav-link py-0"><%= link_to ' Responses', responses_path if can? :read,Response %></a>
+          <%#a class="nav-item nav-link py-0"><%= link_to ' Responses', responses_path if can? :read,Response %></a>
 
           <a class="nav-item nav-link py-0"><%= link_to ' Tests' , tests_path if can? :manage,Test %></a>
 
@@ -61,22 +78,20 @@
         </div>
       </div>
 
-      <div class="nav-item dropdown py-0">
+      <div class="nav-item dropdown py-0" id="navbardropdownimageposition">
         <a class="nav-dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">
           <%= image_tag("img.png",:class=>"img-circle") %>
         </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+        <div class="dropdown-menu dropdown-menu-right" id="navbarDropdownimage" aria-labelledby="navbarDropdown">
           <% if user_signed_in? %>
-           <a class="dropdown-item"><%= link_to current_user.email, edit_user_registration_path %></a>
-           <div class="dropdown-divider"></div>
-           <center>
-             <a class=" btn btn-secondary" data-method="delete" href="/users/sign_out">Logout</a>
-           </center>
-
+            <a class="dropdown-item disabled"><%= current_user.email %></a>
+            <a><%= link_to "Update Profile", edit_user_registration_path %></a>
+            <div class="dropdown-divider"></div>
+            <a><%= link_to "Logout", destroy_user_session_path, method: :delete %></a>
           <% else %>
-           <a class="dropdown-item"><%= link_to "Sign Up", new_user_registration_path %></a>
-           <div class="dropdown-divider"></div>
-           <a class="dropdown-item"><%= link_to "Login", new_user_session_path %></a>
+            <a class="dropdown-item"><%= link_to "Sign Up", new_user_registration_path %></a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item"><%= link_to "Login", new_user_session_path %></a>
           <% end %>
         </div>
       </div>
@@ -88,7 +103,7 @@
     <footer class="page-footer font-small footer">
         <div class="card-footer text-muted text-center">
           <p class="text-white">
-            © Copyright 2018 <a href="https://www.ksolves.com/">@Ksolves</a>
+            © Copyright 2018 <a class="text-white" href="https://www.ksolves.com/">@Ksolves</a>
             -All Rights Reserved </p>
         </div>
     </footer>

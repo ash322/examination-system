@@ -9,6 +9,8 @@ class Question < ApplicationRecord
   belongs_to :paper
   belongs_to :correct_option, class_name: 'Option', optional: true
   has_many :responses
+  has_many :images, as: :record
+
   validate do
     check_options_number
     check_unique_options
@@ -17,10 +19,6 @@ class Question < ApplicationRecord
   private
 
   def check_unique_options
-    #options.body.unique
-    # options.each do |t|
-    #   validates :t.body, uniqueness: true
-    # end
     b = options.map {|e| e.body}
     if (b.count != b.uniq.count)
     errors.add(:base, :no_duplicate_options, message:"no duplicate options")

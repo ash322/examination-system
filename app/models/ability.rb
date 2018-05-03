@@ -37,13 +37,14 @@ class Ability
 
       if user.has_role? :admin
         can :manage, :all
+        cannot :create, Test
         can :update_roles ,User
       elsif user.has_role? :hr
         can :manage,Question
-        can :read ,Response
-        cannot :manage,Test
+        cannot :create, Test
+        can :read,:welcome,Test
       elsif user.has_role? :normal_user
-        can :manage, Test
+        can :create,:welcome, Test
       end
   end
 end

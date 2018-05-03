@@ -1,9 +1,9 @@
 class User < ApplicationRecord
 
-  has_many :user_roles
+  has_many :user_roles, dependent: :destroy
   has_many :roles, through: :user_roles
-  has_one :test
-
+  has_one :test, dependent: :destroy
+  has_many :images, as: :record
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable
 

@@ -23,7 +23,7 @@
                 <%= select_tag( "role_ids[]",
                   options_for_select( Role.all.map{ |c| [c.name, c.id]},
                   user.role_ids),
-                  multiple: true,  placeholder: "Roles",size: 3)%>
+                  {multiple: true, placeholder: "Roles", size: 3, class: 'form-control'})%>
                 <span class="text-center">
                   <%= f.submit class: "btn btn-secondary" %>
                 </span>

@@ -31,7 +31,7 @@
         Options:
         <%= f.fields_for :options  do |o|%>
           <div class= "form-group" id=add_new_option>
-            <%= radio_button_tag "question[default_option]",o.index,@question.options.ids%>
+            <%= radio_button_tag "question[correct_option]",o.index,@question.options.ids%>
             <%= o.text_field :body %>
           </div>
         <% end %>
