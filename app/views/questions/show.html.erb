@@ -13,6 +13,9 @@
     <strong> Total Marks: </strong>
     <%= @question.total_marks %>
   </p>
+  <p>
+    <%= image_tag @question.images.first.name_url(:thumb).to_s, alt: 'Image'  if @question.images.first.name? %>
+  </p>
 
   <p>
     <strong> Correct Option: </strong>
@@ -28,6 +31,7 @@
 
   </p>
 
-  <%= link_to 'Edit', edit_question_path(@question) %> |
-  <%= link_to 'Back',questions_path %>
+  <a title="edit" href="/questions/<%= @question.id %>/edit"><%= image_tag("edit.svg",:style=>"max-width:20px;min-width:20px") %></a>|
+  <a title="back" href="/questions"><%=
+  image_tag("back.png",:style=>"max-width:40px;min-width:20px") %></a>
 </div>

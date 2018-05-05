@@ -30,21 +30,25 @@ class Ability
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
             #can :read, Test.
 
-      alias_action :create, :read, :update, :destroy, :to => :crud
+      #alias_action :create, :read, :update, :destroy, :to => :crud
       user ||= User.new
-      can :manage,Test #,user_id: current_user.id
-      cannot :manage ,Question
+      can [:show, :create,:welcome], Test #,user_id: current_user.id
+      cannot :manage, Question
 
       if user.has_role? :admin
         can :manage, :all
         cannot :create, Test
         can :update_roles ,User
+
       elsif user.has_role? :hr
         can :manage,Question
+        can :manage, Test
         cannot :create, Test
-        can :read,:welcome,Test
+        can :manage, Paper
+
       elsif user.has_role? :normal_user
-        can :create,:welcome, Test
+        can :manage, Test
+        cannot :read, Test
       end
   end
 end

@@ -4,14 +4,14 @@
     <%= f.hidden_field :paper_id, :value => params[:paper_id]  %>
     <% @question.each_with_index do |question_object,index| %>
       <div class="col-12 col-md-8">
-        <strong> Question <%= index+1 %>: </strong>
+        <strong> <%= index+1 %>: </strong>
         <%= question_object.question %>
+        <%= image_tag question_object.images.first.name_url(:thumb).to_s, alt: 'Image'  if    question_object.images.first.name? %>
         <% question_id = question_object.id %>
           </br>
         <div class="col-6 col-md-6">
           <%= f.fields_for :responses do |response_f| %>
           <%= response_f.hidden_field :question_id, value: question_object.id %>
-
             <% question_object.options.each_with_index do |option, i| %>
               <% i+1 %>
               <% if i %2 == 0%>

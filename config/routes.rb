@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  root 'tests#welcome'
+  root 'users#welcome'
   get 'questions/add_option'
   post 'users/update_roles/:id' => 'users#update_roles'
   patch 'users/update_roles/:id' => 'users#update_roles'
-  #get '/tests/:id/result', to: 'tests#result'
 
-  #get 'papers/:id/tests/new' => 'tests/new'
+  get 'users/welcome'
+  get 'tests/thanks'
   devise_for :users, :controllers =>{registrations: 'registrations'}
 
   get 'users/manage_roles'
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   #match  'papers/:paper_id/tests/start_test' ,to: 'tests/start_test', via: [:get]
   resources 'papers'   do
-    resources 'tests', except: [:edit, :update, :destroy]
+    resources 'tests', except: [:edit, :update,:destroy]
     #get 'new_paper_test_path'
   end
   get 'papers/index'

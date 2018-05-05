@@ -36,34 +36,10 @@ class TestsController < ApplicationController
     @test.test_date = Date.today
     @test.end_date = Date.today
 
-    unless params[:test][:responses_attributes]
-      flash[:error] = 'Attempt atleast a question'
-      render action: :index
-    end
-
-    length = params[:test][:responses_attributes].keys.length
-
-    @test.marks_obtained = 0
-
-    for i in 0..length-1 do
-      @test.responses[i].question_id = id = params[:test][:responses_attributes].keys[i]
-      q = Question.find(id)
-      if @test.responses[i].response == q.correct_option_id.to_s
-        @test.marks_obtained += q.total_marks
-      end
-    end
-
-    percentage = (@test.marks_obtained*100)/(length*100)
-    if percentage >=70
-      @test.result = true
-    els.come
-      @test.result = false
-    end
-
     respond_to do |format|
       if @test.save
         flash[:notice] = "Test Complete"
-        format.html { redirect_to @test }
+        format.html { render action: :thanks }
       else
         flash[:error] = 'Error completing Test'
         format.html { render action: :new }

@@ -8,6 +8,7 @@ class QuestionsController < ApplicationController
   def new
     @question = Question.new
     @question.options.build
+    @question.images.build
   end
 
   def add_option
@@ -60,7 +61,7 @@ class QuestionsController < ApplicationController
 
   private
   def question_params
-    params.require(:question).permit(:question, :correct_option_id, :total_marks, :paper_id,
+    params.require(:question).permit(:question, :correct_option_id, :total_marks, :paper_id,images_attributes: [:id, :name,:record_id,:record_type],
     options_attributes:[:body, :id])
   end
 end

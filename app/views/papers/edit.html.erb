@@ -1,7 +1,10 @@
-<h1> Editing Papers </h1>
+<div class="container">
+  <h1> Editing Papers </h1>
 
-<%= render 'form', Paper: @paper %>
+  <%= render 'form', Paper: @paper %>
+  </br>
+  <a title="show" href="/papers/<%= @paper.id %>"><%=                   image_tag("visibility.svg",:style=>"max-width:30px;min-width:20px") %></a>|
 
-<%= link_to 'Show', @paper %> |
-
-<%= link_to 'Back', papers_path %>
+  <a title="back" href="/papers"><%=
+  image_tag("back.png",:style=>"max-width:20px;min-width:20px") %></a>
+</div>

@@ -1,4 +1,5 @@
 class OptionsController < ApplicationController
+  load_and_authorize_resource
   def index
     @option = Option.all
   end

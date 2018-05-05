@@ -4,7 +4,8 @@
 
   <%= render 'form', Question: @question %>
 
-  <%= link_to 'Show', @question %> |
+  <a title="show" href="/questions/<%= @question.id %>"><%=                   image_tag("visibility.svg",:style=>"max-width:20px;min-width:20px") %></a>|
 
-  <%= link_to 'Back', questions_path %>
+  <a title="back" href="/questions"><%=
+  image_tag("back.png",:style=>"max-width:40px;min-width:20px") %></a>
 </div>

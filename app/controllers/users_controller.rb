@@ -7,6 +7,10 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def welcome
+    #redirect_to tests_welcome_path
+  end
+
   def create
     @user = User.new(user_params)
     @user.save
@@ -57,12 +61,3 @@ private
     params.require(:user).permit(:fname, :lname,:contact,:email)
   end
 end
-#
-# params[:user]={fname: '', lname: '' ...}
-#
-# def user_roles_params
-#   params.require(:user).permit(roles_attributes: [:user_id, role_id])
-# end
-#
-# params[:user][:roles_attributes] = {"0": {user_id: 234, role_id: 23},
-#                                     "1": {user_id: 234, role_id: 23}}

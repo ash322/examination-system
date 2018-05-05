@@ -1,0 +1,33 @@
+<style>
+  .abc{
+    font-size: 3.6rem;
+      font-weight: 600;
+      letter-spacing: -6px;
+      text-transform: uppercase;
+      word-spacing: 10px;
+      font-family: "Liberation Mono", "Courier New", monospace;
+      text-shadow: 0 -1px 1px #666, 0 1px 1px #333;
+  }
+  .image-footer{
+    margin-left: 35rem;
+    margin-top: 20rem;
+  }
+  body{
+    background: url("https://www.ksolves.com/images/banner/accelerate-your-future.jpg");
+    background-size: cover;
+  }
+
+</style>
+
+<body>
+  <h3 class="text-white text-center abc">
+    You are here at Ksolves!
+  </h3>
+
+  <div class="image-footer">
+  <a class="above" title="Click me! to Start Test." href="/tests/welcome"><%=                   image_tag("start1.png",:style=>"max-width:80px;min-width:50px")  if can? :create,Test %></a>
+
+  <a class="above" title="Click me! to Start our Services." href="/questions"><%=
+  image_tag("start_logo1.png",:style=>"max-width:120px;min-width:50px") if can? :manage,Question %> </a>
+  </div>
+</body>

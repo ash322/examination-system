@@ -19,3 +19,4 @@ tmp/*
 .byebug_history
 tmp
 log
+public/uploads

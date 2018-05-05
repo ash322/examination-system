@@ -1,11 +1,9 @@
-<div class="field">
+<div class="form-group">
 
   <% option = rand(0..50) %>
   <input type= "radio" name= "question[correct_option]" id= "question_correct_<%= option %>" value= <%= option %> required>
-  <div class="invalid-feedback">
-    Please select atleast a Correct Option.
-  </div>
-  <input type= "text" name= "question[options_attributes][<%= option %>][body]"
+
+  <input type= "text" class="form-control" name= "question[options_attributes][<%= option %>][body]"
    id= "question_options_attributes_<%= option %>_body">
   <br>
 </div>

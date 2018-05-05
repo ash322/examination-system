@@ -1,4 +1,5 @@
 class PapersController < ApplicationController
+  load_and_authorize_resource
   def index
     @paper = Paper.all
   end

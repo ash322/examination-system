@@ -4,13 +4,13 @@ class Question < ApplicationRecord
 
   has_many :options ,dependent: :destroy
   validates_associated :options
-  accepts_nested_attributes_for :options#, allow_destroy: true, reject_if: :all_blank
+  accepts_nested_attributes_for :options, allow_destroy: true#, reject_if: :all_blank
   has_one :test ,through: :paper
   belongs_to :paper
   belongs_to :correct_option, class_name: 'Option', optional: true
   has_many :responses
   has_many :images, as: :record
-
+  accepts_nested_attributes_for :images, allow_destroy: true
   validate do
     check_options_number
     check_unique_options

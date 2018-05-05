@@ -15,12 +15,14 @@
         position: relative;
         min-height: 100%;
       }
-      body { background-color: lightyellow;
+       body { background-color: lightyellow;
+         /*background: url("https://www.ksolves.com/images/banner/accelerate-your-future.jpg");*/
+         background-size: cover;
         margin-bottom: 60px; }
         .img-circle{
         width: 50px;
         height: 50px;
-        background-size: cover;
+        background-size:new cover;
         display: block;
         border-radius: 50%;
         -webkit-border-radius: 100px;
@@ -46,7 +48,7 @@
       }
       #navbarDropdownimage a{
         padding: 0px;
-        margin: 3px;
+        margin-left: 5px;
       }
       #navbardropdownimageposition{
         margin-right: 5rem;
@@ -54,12 +56,23 @@
       .ma-rg{
       margin-top: 1rem;
       }
+      .jumbotron{
+        padding-top:2rem;
+        padding-bottom:2rem;
+      }
+      #fname {
+        margin-left: 5px;
+        margin-right: 5px;
+      }
+      .above{
+
+      }
     </style>
   </head>
 
   <body>
     <nav class="navbar navbar-expand-sm navbar-custom">
-      <a class="navbar-brand py-0"><%= image_tag("logo.png",:style=>"max-width:150px;min-width:150px") %></a>
+      <a class="navbar-brand py-0"><%= image_tag("logo.png",:style=>"background-color: black;max-width:150px;min-width:150px") %></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle na#894ba5vigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -70,7 +83,7 @@
 
           <a class="nav-item nav-link active py-0"><%= link_to ' Questions', questions_path if can? :manage,Question %> <span class="sr-only">(current)</span></a>
 
-          <%#a class="nav-item nav-link py-0"><%= link_to ' Responses', responses_path if can? :read,Response %></a>
+          <a class="nav-item nav-link py-0"><%= link_to ' Papers', papers_path if can? :read,Paper %></a>
 
           <a class="nav-item nav-link py-0"><%= link_to ' Tests' , tests_path if can? :manage,Test %></a>
 
@@ -84,9 +97,9 @@
         </a>
         <div class="dropdown-menu dropdown-menu-right" id="navbarDropdownimage" aria-labelledby="navbarDropdown">
           <% if user_signed_in? %>
-            <a class="dropdown-item disabled"><%= current_user.email %></a>
-            <a><%= link_to "Update Profile", edit_user_registration_path %></a>
+            <a class="dropdown-item disabled" id="fname"><%= current_user.fname+" "+current_user.lname %></a>
             <div class="dropdown-divider"></div>
+            <a><%= link_to "Update Profile", edit_user_registration_path %></a>
             <a><%= link_to "Logout", destroy_user_session_path, method: :delete %></a>
           <% else %>
             <a class="dropdown-item"><%= link_to "Sign Up", new_user_registration_path %></a>

@@ -1,5 +1,7 @@
 <div class="container">
-  <h1> Listing Papers </h1>
+  <h1> Listing Papers <span class="text-center">
+    <a href=" /papers/new " class="btn btn-primary float-right ma-rg" role="button" aria-pressed="true">New Paper</a></span>
+  </h1>
   <table class="table table-light table-hover table-sm">
     <thead class="thead-dark">
     <tr>
@@ -9,12 +11,17 @@
     <% @paper.each do |p| %>
       <tr>
         <td> <%= p.name %> </td>
-        <td> <%= link_to 'Show', paper_path(p) %> </td>
-        <td> <%= link_to 'Edit', edit_paper_path(p) %> </td>
-        <td> <%= link_to 'Destroy', p, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+        <td>
+          <a title="show" href="/papers/<%= p.id %>"><%=                   image_tag("visibility.svg",:style=>"max-width:20px;min-width:20px") %></a>
+        </td>
+        <td>
+          <a title="edit" href="/papers/<%= p.id %>/edit"><%= image_tag("edit.svg",:style=>"max-width:20px;min-width:20px") %></a>
+        </td>
+        <td>
+          <a title="delete" data-method="delete" data-confirm="Are you sure?" href="/papers/<%= p.id %>"><%= image_tag("delete.svg",:style=>"max-width:20px;min-width:20px") %></a>
+        </td>
       </tr>
     <% end %>
   </table>
   <br />
-  <%= link_to 'New Paper', new_paper_path %>
 </div>

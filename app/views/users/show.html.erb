@@ -3,11 +3,12 @@
     <strong> Fname: </strong>
     <%= @user.fname %>
   </p>
-
   <p>
     <strong> Lname: </strong>
     <%= @user.lname %>
   </p>
+
+  <%#= image_tag(@user.images.name, alt: 'Image') if @user.images.name? %>
 
   <p>
     <strong> Contact: </strong>
@@ -19,6 +20,5 @@
     <%= @user.email %>
   </p>
 
-  <%= link_to 'Edit', edit_user_path(@user) %> |
-  <%= link_to 'Back', users_path %>
+  <a title="edit" href="/users/<%= @user.id %>/edit"><%= image_tag("edit.svg",:style=>"max-width:20px;min-width:20px") %></a> | <a title="back" href="/users"><%=image_tag("back.png",:style=>"max-width:30px;min-width:30px") %></a>
 </div>
