@@ -9,8 +9,4 @@ class RegistrationsController < Devise::RegistrationsController
 
     params.require(:user).permit(:fname, :lname, :email,:contact, :password, :password_confirmation, :current_password, images_attributes: [:id, :name,:record_id,:record_type])
   end
-
-  # def update
-  #   current_user.images.build
-  # end
 end

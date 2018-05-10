@@ -46,7 +46,9 @@
         color:black;
         text-decoration: none;
       }
-      #navbarDropdownimage a{
+      #navbarDropdownimage a{Our Hr will update you regarding the result.
+
+
         padding: 0px;
         margin-left: 5px;
       }
@@ -67,12 +69,22 @@
       .above{
 
       }
+      .alert_message{
+        background-color: #343a40;
+      }
+      .dropdown1{
+        width: 40%;
+        display:inline-block;
+      }
+      table{
+        border-collapse:initial;
+      }
     </style>
   </head>
 
   <body>
     <nav class="navbar navbar-expand-sm navbar-custom">
-      <a class="navbar-brand py-0"><%= image_tag("logo.png",:style=>"background-color: black;max-width:150px;min-width:150px") %></a>
+      <a class="navbar-brand py-0" href="/users/welcome"><%= image_tag("logo.png",:style=>"background-color: black;max-width:150px;min-width:150px") %></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle na#894ba5vigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -92,7 +104,7 @@
       </div>
 
       <div class="nav-item dropdown py-0" id="navbardropdownimageposition">
-        <a class="nav-dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">
+        <a class="nav-dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" href="">
           <%= image_tag("img.png",:class=>"img-circle") %>
         </a>
         <div class="dropdown-menu dropdown-menu-right" id="navbarDropdownimage" aria-labelledby="navbarDropdown">
@@ -109,7 +121,11 @@
         </div>
       </div>
     </nav>
-    <div><%= alert %></div>
+    <div class="alert alert-warning" role="alert">
+      <%= alert %>
+      <%= notice %>
+    </div>
+
 
     <%= yield %>
 

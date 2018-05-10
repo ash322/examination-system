@@ -2,14 +2,16 @@ class Question < ApplicationRecord
 #attr_accessible :option_attributes
   OPTIONS_COUNT_MIN = 2
 
-  has_many :options ,dependent: :destroy
+  has_many :options , dependent: :destroy
   validates_associated :options
+  validates :question, presence: true
+  validates :total_marks, presence: true
   accepts_nested_attributes_for :options, allow_destroy: true#, reject_if: :all_blank
   has_one :test ,through: :paper
   belongs_to :paper
   belongs_to :correct_option, class_name: 'Option', optional: true
   has_many :responses
-  has_many :images, as: :record
+  has_many :images, as: :record, dependent: :destroy
   accepts_nested_attributes_for :images, allow_destroy: true
   validate do
     check_options_number

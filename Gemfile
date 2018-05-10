@@ -65,4 +65,10 @@ gem 'carrierwave', '~> 0.11.2'
 
 gem 'mini_magick', '~> 4.5', '>= 4.5.1'
 
+gem 'paranoia', '~> 2.1', '>= 2.1.5'
+
+gem 'whois', '~> 4.0'
+
+gem 'whois-parser', '~> 1.0'
+
 ruby '2.4.1'

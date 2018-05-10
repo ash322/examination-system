@@ -11,8 +11,14 @@ class RolesController < ApplicationController
 
   def create
     @role = Role.new(role_params)
-    @role.save
-    redirect_to @role
+    respond_to do |format|
+      if @role.save
+        format.html { redirect_to @role, notice: 'Role was successfully created.'}
+      else
+        flash[:error] = 'Error completing Role'
+        format.html { render action: :new }
+      end
+    end
   end
 
   def edit

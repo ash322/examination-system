@@ -38,8 +38,7 @@ class TestsController < ApplicationController
 
     respond_to do |format|
       if @test.save
-        flash[:notice] = "Test Complete"
-        format.html { render action: :thanks }
+        format.html { render action: :thanks , notice: 'Test was successfully created.'}
       else
         flash[:error] = 'Error completing Test'
         format.html { render action: :new }
@@ -51,7 +50,7 @@ class TestsController < ApplicationController
     @test = Test.find(params[:id])
   end
 
-private
+  private
   def test_params
     params.require(:test).permit(:user_id, :start_date, :end_date, :test_date, :marks_obtained, :result, :exam_id, responses_attributes:[:id,:test_id,:question_id,:response])
   end

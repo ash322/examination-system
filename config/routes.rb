@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   #match  'papers/:paper_id/tests/start_test' ,to: 'tests/start_test', via: [:get]
   resources 'papers'   do
-    resources 'tests', except: [:edit, :update,:destroy]
+    resources 'tests', except: [:edit, :update, :destroy]
     #get 'new_paper_test_path'
   end
   get 'papers/index'

@@ -12,7 +12,9 @@
   }
 </style>
 <div class="container">
-  <%= @test.user.email %>
+   Test given by : <%= @test.user.fname + " " + @test.user.lname %><br />
+   Marks Obtained : <%= @test.marks_obtained %><br />
+   Result : <%= @test.result ? "Passed" : "Failed" %><br />
   <br /></br>
   <div class="jumbotron col-12 col-md-8">
     <% @question.each_with_index do |q,index| %>

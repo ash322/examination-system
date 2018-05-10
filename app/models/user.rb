@@ -3,7 +3,8 @@ class User < ApplicationRecord
   has_many :user_roles, dependent: :destroy
   has_many :roles, through: :user_roles
   has_one :test, dependent: :destroy
-  has_many :images, as: :record
+  has_many :images, as: :record, dependent: :destroy
+  acts_as_paranoid
   #accepts_nested_attributes_for :images, allow_destroy: true
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable

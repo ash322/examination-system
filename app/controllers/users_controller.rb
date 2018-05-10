@@ -53,7 +53,7 @@ class UsersController < ApplicationController
     role_ids.each do |role_id|
       UserRole.find_or_create_by(:user_id => user,:role_id => role_id)
     end
-    redirect_to users_manage_roles_path, notice: 'Roles were sucessfully assigned.'
+    redirect_to users_manage_roles_path, notice: 'Role was sucessfully assigned.'
   end
 
 private

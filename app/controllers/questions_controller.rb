@@ -32,8 +32,7 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if @question.save
-        flash[:notice] = "Question was sucessfully created"
-        format.html{ redirect_to @question }
+        format.html{ redirect_to @question, notice: 'Question was successfully created.'  }
       else
         flash[:error] = 'Error creating question'
         format.html { render action: :new }

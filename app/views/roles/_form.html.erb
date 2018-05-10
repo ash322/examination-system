@@ -1,5 +1,12 @@
 <%= form_for @role do |f| %>
-
+  <% if @role.errors.any? %>
+    <div id="error_explanation">
+        <% @role.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <div class="field">
     <%= f.label :roles %>
     <%= f.text_field :name %>

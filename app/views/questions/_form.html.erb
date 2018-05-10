@@ -1,8 +1,5 @@
 <% if @question.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
-
-    <ul>
       <% @question.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
       <% end %>
@@ -18,23 +15,25 @@
     </div>
     <div class="form-row">
       <div class="form-group col-md-4" >
-        <%= f.label :Body %>
-        <%= f.text_field :question, class: "form-control" %>
+        <%= f.label :Question %>
+        <%= f.text_field :question, class: "form-control", placeholder: "Please enter a Question" %>
 
         <%= f.label :Total_marks %>
-        <%= f.text_field :total_marks, class: "form-control" %>
+        <%= f.text_field :total_marks, class: "form-control", placeholder: "Please enter Total Marks " %>
       </div>
     </div>
     <%= f.fields_for :images do |image_form| %>
       <%= image_form.file_field :name %>
+      <%= image_tag @question.images.first.name_url(:thumb).to_s if @question.images.first.name_url.present? %>
     <% end %>
     <div class="form-row">
       <div class="form-group col-md-4">
         Options:
+
         <%= f.fields_for :options  do |o| %>
           <div class="form-group" id=add_option>
             <%= radio_button_tag "question[correct_option]", o.index, @question.options.ids %>
-            <%= o.text_field :body, class: "form-control" %>
+            <%= o.text_field :body, class: "form-input", placeholder: "Please enter Options" %>
           </div>
         <% end %>
         <%= link_to 'Add Option',questions_add_option_path , id: "new_link" , remote: true %>

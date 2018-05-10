@@ -4,6 +4,7 @@ class Test < ApplicationRecord
   has_many :questions, through: :paper
   has_many :responses, dependent: :destroy
   accepts_nested_attributes_for :responses
+  acts_as_paranoid
   #validates_associated :responses
   scope :created_between, lambda { |start_date, end_date| where("created_at >= ? AND created_at <= ?", start_date, end_date )}
 

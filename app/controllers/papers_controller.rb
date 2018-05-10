@@ -10,8 +10,14 @@ class PapersController < ApplicationController
 
   def create
     @paper = Paper.new(paper_params)
-    @paper.save
-    redirect_to @paper
+    respond_to do |format|
+      if @paper.save
+        format.html{ redirect_to @paper, notice: 'Paper was successfully created.'  }
+      else
+        flash[:error] = 'Error creating paper'
+        format.html { render action: :new }
+      end
+    end
   end
 
   def edit

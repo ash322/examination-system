@@ -1,5 +1,5 @@
 <div class="container">
-  <h1> Listing Tests </h1>
+  <h3> Listing Tests </h3>
 
   <table class="table table-light table-hover table-sm">
     <thead class="thead-dark">
@@ -22,7 +22,7 @@
           <td><%= t.end_date.to_time.strftime(' %dth,%b %Y') %></td>
           <td><%= t.test_date.to_time.strftime(' %dth,%b %Y') %></td>
           <td><%= t.marks_obtained %></td>
-          <td><%= t.result == true ? "Passed" : "Failed" %></td>
+          <td><%= t.result ? "Passed" : "Failed" %></td>
           <td><%= t.paper.name %></td>
           <td>
           <a title="show" href="/users/<%= t.user_id %>/tests/<%= t.id %>/result "><%=                   image_tag("visibility.svg",:style=>"max-width:20px;min-width:20px") %></a>
@@ -32,7 +32,4 @@
     </tbody>
   </table>
     <br/>
-    <!-- <div class="text-center">
-      <a href=" /tests/welcome " class="btn btn-primary" role="button" aria-pressed="true">New Test</a></span>
-    </div> -->
 </div>

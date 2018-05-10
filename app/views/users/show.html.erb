@@ -7,7 +7,12 @@
     <strong> Lname: </strong>
     <%= @user.lname %>
   </p>
-
+  <p>
+    <strong> Roles: </strong>
+    <% @user.roles.each do |t| %>
+    <%= t.name %>
+    <% end %>
+  </p>
   <%#= image_tag(@user.images.name, alt: 'Image') if @user.images.name? %>
 
   <p>

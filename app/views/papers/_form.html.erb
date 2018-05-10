@@ -1,9 +1,18 @@
 <style>
-.jumbotron{
-  margin-right: 15rem;
-}
-
+  .jumbotron{
+    margin-right: 15rem;
+  }
 </style>
+
+<% if @paper.errors.any? %>
+  <div id="error_explanation">
+      <% @paper.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div class="jumbotron">
   <%= form_for @paper do |f| %>
 
