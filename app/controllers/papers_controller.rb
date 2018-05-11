@@ -6,10 +6,20 @@ class PapersController < ApplicationController
 
   def new
     @paper = Paper.new
+    question = @paper.questions.build
+    question.options.build
+  end
+
+  def add_option
+    respond_to do|format|
+      format.html{}
+      format.js{}
+    end
   end
 
   def create
     @paper = Paper.new(paper_params)
+    binding.pry
     respond_to do |format|
       if @paper.save
         format.html{ redirect_to @paper, notice: 'Paper was successfully created.'  }

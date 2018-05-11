@@ -12,9 +12,9 @@
     </div>
       <%#= form_for @test,:url=>"process_welcome" do |t| %>
       <%= form_with url: tests_process_welcome_path do |f| %>
-
+        <%# binding.pry %>
         Please select your exam
-        <%= select_tag("papers",options_for_select(Paper.all.map{ |c| [c.name,c.id]}), class: "btn btn-primary", style: "background-color:white;color:black")%>
+        <%= select_tag("papers",options_for_select(current_user.papers.map{ |c| [c.name,c.id]}), class: "btn btn-primary", style: "background-color:white;color:black")%>
         <p class= "text-center">
           <%= f.submit "Start Test",class: "btn btn-success" %>
         </p>

@@ -4,6 +4,8 @@ class User < ApplicationRecord
   has_many :roles, through: :user_roles
   has_one :test, dependent: :destroy
   has_many :images, as: :record, dependent: :destroy
+  has_many :user_papers, dependent: :destroy
+  has_many :papers, through: :user_papers
   acts_as_paranoid
   #accepts_nested_attributes_for :images, allow_destroy: true
   devise :database_authenticatable, :registerable,

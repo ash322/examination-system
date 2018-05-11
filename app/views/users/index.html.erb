@@ -3,31 +3,64 @@
   <table class="table table-light table-hover table-sm">
     <thead class="thead-dark">
       <tr>
-        <th> Fname </th>
-        <th> Lname </th>
+        <th> Name </th>
         <th> Contact </th>
         <th> Email </th>
+        <th> Papers </th>
         <th colspan='3'> Actions </th>
       </tr>
     </thead>
     <tbody>
-      <% @user.each do |user| %>
+      <!-- <% @user.each do |user| %>
+        <% if user.has_role?(:admin) %>
+        <% next %>
+        <% end %> -->
         <tr>
-          <td><%= user.fname %></td>
-          <td><%= user.lname %></td>
+          <td><%= user.fname + " " + user.lname   %></td>
           <td><%= user.contact %></td>
           <td><%= user.email %></td>
+          <%# binding.pry %>
+          <td>
+            <% user.papers.each do |t| %>
+            <%= t.name %>
+            <% end %>
+          </td>
           <td>
             <a title="show" href="/users/<%= user.id %>"><%=                   image_tag("visibility.svg",:style=>"max-width:20px;min-width:20px") %></a>
           </td>
+
           <td>
-            <a title="edit" href="/users/<%= user.id %>/edit"><%= image_tag("edit.svg",:style=>"max-width:20px;min-width:20px") %></a>
+            <a title="Assign Papers" href="users/add_paper/<%= user.id %>" data-toggle="modal" data-target="#assignPapers" id="add_paper" data-remote=true >
+              <%= image_tag("edit.svg",:style=>"max-width:20px;min-width:20px") %></a>
           </td>
+
           <td>
             <a data-method="delete" title="delete" data-confirm="Are you sure?" href="/users/<%= user.id %>"><%= image_tag("delete.svg",:style=>"max-width:20px;min-width:20px") %></a>
           </td>
         </tr>
+        <!-- model -->
+        <div class="modal fade" id="assignPapers" tabindex="-1" role="dialog"         aria-labelledby="assignPapersLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="assignPapersLabel">Assign Papers</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            <div class="modal-body" id="insert_paper">
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+            </div>
+          </div>
+        </div>
+
       </tbody>
     <% end %>
   </table>
+
+
 </div>

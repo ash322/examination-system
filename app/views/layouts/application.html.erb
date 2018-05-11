@@ -15,7 +15,7 @@
         position: relative;
         min-height: 100%;
       }
-       body { background-color: lightyellow;
+       body { background-color: white;
          /*background: url("https://www.ksolves.com/images/banner/accelerate-your-future.jpg");*/
          background-size: cover;
         margin-bottom: 60px; }
@@ -46,9 +46,7 @@
         color:black;
         text-decoration: none;
       }
-      #navbarDropdownimage a{Our Hr will update you regarding the result.
-
-
+      #navbarDropdownimage a{
         padding: 0px;
         margin-left: 5px;
       }
@@ -68,9 +66,6 @@
       }
       .above{
 
-      }
-      .alert_message{
-        background-color: #343a40;
       }
       .dropdown1{
         width: 40%;
@@ -99,7 +94,7 @@
 
           <a class="nav-item nav-link py-0"><%= link_to ' Tests' , tests_path if can? :manage,Test %></a>
 
-          <a class="nav-item nav-link py-0"><%= link_to ' Manage Roles' ,users_manage_roles_path if can? :manage,User %></a>
+          <a class="nav-item nav-link py-0"><%= link_to ' Manage Roles' ,users_manage_roles_path if can? :manage,UserRole %></a>
         </div>
       </div>
 
@@ -121,7 +116,7 @@
         </div>
       </div>
     </nav>
-    <div class="alert alert-warning" role="alert">
+    <div class="alert alert-light" role="alert">
       <%= alert %>
       <%= notice %>
     </div>

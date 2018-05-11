@@ -14,7 +14,7 @@
     <%= @question.total_marks %>
   </p>
   <p>
-    <%= image_tag @question.images.first.name_url(:thumb).to_s, alt: 'Image'  if !@question.images.first.nil? %>
+    <%= image_tag @question.images.first.name_url(:thumb).to_s, alt: 'Image'  if @question.images.first.name_url.present? %>
   </p>
 
   <p>

@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   root 'users#welcome'
   get 'questions/add_option'
+  get 'papers/add_option'
+  get 'users/add_paper/:id' => 'users#add_paper'
   post 'users/update_roles/:id' => 'users#update_roles'
   patch 'users/update_roles/:id' => 'users#update_roles'
-
+  post 'users/update_papers/:id' => 'users#update_papers'
   get 'users/welcome'
   get 'tests/thanks'
   devise_for :users, :controllers =>{registrations: 'registrations'}

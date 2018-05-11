@@ -16,7 +16,7 @@
     <div class="form-row">
       <div class="form-group col-md-4" >
         <%= f.label :Question %>
-        <%= f.text_field :question, class: "form-control", placeholder: "Please enter a Question" %>
+        <%= f.text_area :question, class: "form-control", placeholder: "Please enter a Question" %>
 
         <%= f.label :Total_marks %>
         <%= f.text_field :total_marks, class: "form-control", placeholder: "Please enter Total Marks " %>
@@ -32,8 +32,8 @@
 
         <%= f.fields_for :options  do |o| %>
           <div class="form-group" id=add_option>
-            <%= radio_button_tag "question[correct_option]", o.index, @question.options.ids %>
-            <%= o.text_field :body, class: "form-input", placeholder: "Please enter Options" %>
+            <%= radio_button_tag "question[correct_option]", o.index, @question.options.ids , class: "form-input"%>
+            <%= o.text_area :body, class: "form-input", placeholder: "Please enter Options" %>
           </div>
         <% end %>
         <%= link_to 'Add Option',questions_add_option_path , id: "new_link" , remote: true %>

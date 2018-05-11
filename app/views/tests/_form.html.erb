@@ -6,12 +6,12 @@
       <div class="col-12 col-md-8">
         <strong> <%= index+1 %>: </strong>
         <%= question_object.question %>
-        <%= image_tag question_object.images.first.name_url(:thumb).to_s, alt: 'Image'  if    !question_object.images.first.nil? %>
+        <%= image_tag question_object.images.first.name_url(:thumb).to_s, alt: 'Image'  if    question_object.images.first.name_url.present? %>
         <% question_id = question_object.id %>
           </br>
         <div class="col-6 col-md-6">
           <%= f.fields_for :responses do |response_f| %>
-          <%= response_f.hidden_field :question_id, value: question_object.id %>
+            <%= response_f.hidden_field :question_id, value: question_object.id %>
             <% question_object.options.each_with_index do |option, i| %>
               <% i+1 %>
               <% if i %2 == 0%>

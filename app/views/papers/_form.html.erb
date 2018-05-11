@@ -16,10 +16,40 @@
 <div class="jumbotron">
   <%= form_for @paper do |f| %>
 
-    <div class="form-group col-md-4 row">
+    <div id= "add_new_question" class="form-group col-md-8 row">
       <%= f.label :Name %>
       <%= f.text_field :name, class: "form-control" %>
     </div>
+
+      <%= link_to 'Add Question','#', id: "new_question" %>
+      <%= f.fields_for :questions, html: { multipart: true } do |q| %>
+        <div id="test"></div>
+        <div id="add_question" style="display: none;" class="form-group col-md-4" >
+          <%= q.label :Question %>
+          <%= q.text_area :question, placeholder: "Please enter a Question" %>
+
+          <%= q.label :Total_marks %>
+          <%= q.text_field :total_marks, placeholder: "Please enter Total Marks " %>
+
+          <%= q.fields_for :options do |option| %>
+            <div class="form-group" id=add_option>
+              <%= radio_button_tag "question[correct_option]", option.index, option.object.id , class: "form-input"%>
+              <%= option.text_area :body, placeholder: "Please enter Options" %>
+            </div>
+          <% end %>
+
+          <%= link_to 'Add Option', papers_add_option_path, id: "new_link" , remote: true %>
+        </div>
+      <% end %>
+
+
+    <script>
+
+     $('#new_question').click(function(e){
+       e.preventDefault()
+      $('#add_new_question').append($('#add_question').html());
+    });
+    </script>
 
     <div class = "actions" >
       <%= f.submit class: "btn btn-primary"%>

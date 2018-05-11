@@ -12,6 +12,9 @@
     </thead>
     <tbody>
       <% @user.each do |user| %>
+        <% if user.has_role?(:admin) %>
+          <% next %>
+        <% end %>
         <tr>
           <td><%= user.fname %></td>
           <td><%= user.lname %></td>
@@ -24,7 +27,7 @@
                   options_for_select( Role.all.map{ |c| [c.name, c.id]},
                   user.role_ids),
                   { multiple: true, placeholder: "Roles", size: 3, class: 'form-control dropdown1'})%>
-                  <%= f.submit class: "btn btn-sm btn-secondary", style: "margin-top: -20px" %>
+                  <%= f.submit "Update Roles", class: "btn btn-sm btn-secondary", style: "margin-top: -20px" %>
               <% end %>
             </div>
           </td>

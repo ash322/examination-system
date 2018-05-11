@@ -34,21 +34,25 @@ class Ability
       user ||= User.new
       can [:show, :create,:welcome], Test #,user_id: current_user.id
       cannot :manage, Question
+      cannot :manage, User
 
       if user.has_role? :admin
         can :manage, :all
-        cannot :create, Test
+        cannot [:create,:welcome], Test
         can :update_roles ,User
 
       elsif user.has_role? :hr
         can :manage,Question
         can :manage, Test
-        cannot :create, Test
+        can :manage, User
+        cannot [:create,:welcome], Test
         can :manage, Paper
 
       elsif user.has_role? :normal_user
         can :manage, Test
-        cannot :read, Test
+        #can :create, Test
+        #cannot :read, Test
+        #cannot :manage, User
       end
   end
 end
