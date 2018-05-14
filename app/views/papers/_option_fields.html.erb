@@ -1,0 +1,11 @@
+<fieldset>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <%= f.label :body ,"Options" %>
+      <%= parent_f.radio_button :correct_option_id, f.object.id %>
+      <%= f.text_field :body, class:"form-control" %>
+      <%= f.hidden_field :_destroy %>
+      <%= link_to "remove", '#', class: "remove_fields" %>
+    </div>
+  </div>
+</fieldset>

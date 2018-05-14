@@ -11,15 +11,14 @@
       </tr>
     </thead>
     <tbody>
-      <!-- <% @user.each do |user| %>
-        <% if user.has_role?(:admin) %>
+      <% @user.each do |user| %>
+        <% if user.has_role?(:admin) || user.has_role?(:hr) %>
         <% next %>
-        <% end %> -->
+        <% end %>
         <tr>
           <td><%= user.fname + " " + user.lname   %></td>
           <td><%= user.contact %></td>
           <td><%= user.email %></td>
-          <%# binding.pry %>
           <td>
             <% user.papers.each do |t| %>
             <%= t.name %>
@@ -49,18 +48,14 @@
                 </button>
               </div>
             <div class="modal-body" id="insert_paper">
-
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
+              <button type="submit" form="form_id" class="btn btn-primary">Assign Papers</button>
             </div>
           </div>
         </div>
-
       </tbody>
     <% end %>
   </table>
-
-
 </div>

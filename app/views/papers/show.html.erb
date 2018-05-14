@@ -3,7 +3,22 @@
     <strong> Name: </strong>
     <%= @paper.name %>
   </p>
-
+  <p>
+    <% @paper.questions.each_with_index do |question,index| %>
+    <strong> <%= index+1 %>: </strong>
+      <%= question.question %><br />
+      <% question.options.each_with_index do |option,i| %>
+      <% i+1 %>
+      <% if i %2 == 0%>
+        <br />
+      <% end %>
+      <span>
+        <%= option.body %>
+      </span>
+      <% end %>
+      <br />
+    <% end %>
+  </p>
   <a title="back" href="/papers"><%=
   image_tag("back.png",:style=>"max-width:40px;min-width:20px") %></a>
 </div>

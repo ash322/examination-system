@@ -1,0 +1,17 @@
+<fieldset>
+  <div class="form-row">
+    <div class="form-group col-md-12" >
+      <%= f.label :question, "Question" %><br />
+      <%= f.text_area :question, class:"form-control" %><br />
+      <%= f.label :total_marks, "Total Marks" %><br />
+      <%= f.text_field :total_marks, class:"form-control" %><br />
+      <br />
+      <%#= f.check_box :_destroy %>
+      <%#= f.label :_destroy, "Remove Question" %>
+      <%= f.fields_for :options do |builder| %>
+        <%= render partial:'option_fields', locals:{f: builder, parent_f: f} %>
+      <% end %>
+      <%= link_to_add_fields "Add Options", f, :options, f %>
+    </div>
+  </div>
+</fieldset>

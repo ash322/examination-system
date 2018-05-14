@@ -11,7 +11,6 @@ class TestsController < ApplicationController
 
   def process_welcome
     @paper_id=params[:papers]
-    binding.pry
     redirect_to new_paper_test_path(@paper_id)
   end
 

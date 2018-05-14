@@ -19,7 +19,6 @@ class PapersController < ApplicationController
 
   def create
     @paper = Paper.new(paper_params)
-    binding.pry
     respond_to do |format|
       if @paper.save
         format.html{ redirect_to @paper, notice: 'Paper was successfully created.'  }
@@ -52,6 +51,6 @@ class PapersController < ApplicationController
 
   private
   def paper_params
-    params.require(:paper).permit(:name)
+    params.require(:paper).permit(:name, questions_attributes:[:id,:question, :correct_option_id, :total_marks,options_attributes:[:id,:body]])
   end
 end

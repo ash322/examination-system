@@ -43,7 +43,6 @@ class UsersController < ApplicationController
   def update_papers
     user = params[:id]
     paper_ids = params[:paper_ids]
-    #binding.pry
     UserPaper.where(user_id:user).where.not(paper_id: paper_ids).destroy_all
 
     paper_ids.each do |paper_id|

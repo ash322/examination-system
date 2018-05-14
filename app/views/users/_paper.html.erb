@@ -1,0 +1,8 @@
+<% id= params[:id] %>
+<% user = User.find(id) %>
+<%= form_with url: "users/update_papers/#{user.id}", html: {id: :form_id } do |f| %>
+  <%= select_tag( "paper_ids[]",
+    options_for_select( Paper.all.map{ |c| [c.name, c.id]},
+    user.paper_ids),
+    { multiple: true, placeholder: "Papers", size: 3, class: 'form-control dropdown1'})%>
+<% end %>

@@ -1,9 +1,8 @@
 <div class="form-group">
 
-  <% option = rand(0..50) %>
+  <% option = rand(0..5000) %>
   <input type= "radio" name= "question[correct_option]" id= "question_correct_<%= option %>" value= <%= option %> required>
 
-  <textarea class="form-input" placeholder= "Please enter Options" name= "question[options_attributes][<%= option %>][body]"
-   id= "question_options_attributes_<%= option %>_body"></textarea>
+  <textarea class="form-input" placeholder= "Please enter Options" name= "question[options_attributes][<%= option %>][body]" id= "question_options_attributes_<%= option %>_body"></textarea>
   <br>
 </div>

@@ -12,7 +12,7 @@
     </thead>
     <tbody>
       <% @user.each do |user| %>
-        <% if user.has_role?(:admin) %>
+        <% if user == current_user %>
           <% next %>
         <% end %>
         <tr>
