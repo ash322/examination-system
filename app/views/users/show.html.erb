@@ -1,29 +1,33 @@
-<div class="container">
-  <p>
-    <strong> Fname: </strong>
-    <%= @user.fname %>
-  </p>
-  <p>
-    <strong> Lname: </strong>
-    <%= @user.lname %>
-  </p>
-  <p>
-    <strong> Roles: </strong>
-    <% @user.roles.each do |t| %>
-    <%= t.name %>
-    <% end %>
-  </p>
-  <%#= image_tag(@user.images.name, alt: 'Image') if @user.images.name? %>
+<div class="card text-white bg-secondary" style="width: 20rem;margin-left: 30rem;">
 
-  <p>
-    <strong> Contact: </strong>
-    <%= @user.contact %>
+  <p class="card-header">
+    <strong> Name: </strong>
+    <%= @user.fname + " " + @user.lname %>
   </p>
 
-  <p>
-    <strong> Email: </strong>
-    <%= @user.email %>
-  </p>
+  <div class="card-body" %>
+    <p>
+      <strong> Roles: </strong>
+      <% @user.roles.each do |t| %>
+      <%= t.name %>
+      <% end %>
+    </p>
+    <%#= image_tag(@user.images.name, alt: 'Image') if @user.images.name? %>
 
-  <a title="edit" href="/users/<%= @user.id %>/edit"><%= image_tag("edit.svg",:style=>"max-width:20px;min-width:20px") %></a> | <a title="back" href="/users"><%=image_tag("back.png",:style=>"max-width:30px;min-width:30px") %></a>
+    <p>
+      <strong> Contact: </strong>
+      <%= @user.contact %>
+    </p>
+
+    <p>
+      <strong> Email: </strong>
+      <%= @user.email %>
+    </p>
+  </div>
+  <span class="card-footer">
+    <a title="edit" href="/users/<%= @user.id %>/edit"><%=      image_tag("edit.svg",:style=>"max-width:20px;min-width:20px")%>
+    </a> |
+    <a title="back" href="/users"><%=image_tag("back.png",:style=>"max-width:30px;min-width:30px") %>
+    </a>
+  </span>
 </div>

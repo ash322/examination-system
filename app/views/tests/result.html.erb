@@ -10,12 +10,26 @@
     padding-left: 0px;
     padding-right: 10px;
   }
+  .card{
+    margin-left: .50rem;
+  }
 </style>
+
 <div class="container">
-   Test given by : <%= @test.user.fname + " " + @test.user.lname %><br />
-   Marks Obtained : <%= @test.marks_obtained %><br />
-   Result : <%= @test.result ? "Passed" : "Failed" %><br />
-  <br /></br>
+  <div class="card" style="width: 20rem;">
+
+    <h3 class="card-header" >
+      <%= @test.user.fname + " " + @test.user.lname %><br />
+    </h3>
+
+    <div class="card-body">
+      Marks Obtained : <%= @test.marks_obtained %><br />
+      Result : <%= @test.result ? "Passed" : "Failed" %><br />
+    </div>
+
+  </div>
+    <br />
+
   <div class="jumbotron col-12 col-md-8">
     <% @question.each_with_index do |q,index| %>
       <strong><%= index+1 %>:</strong>

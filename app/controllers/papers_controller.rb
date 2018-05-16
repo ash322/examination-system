@@ -19,6 +19,11 @@ class PapersController < ApplicationController
 
   def create
     @paper = Paper.new(paper_params)
+    @paper.questions.each do |t|
+      correct_body = t.correct_option_body
+      t.correct_option = t.options.select{ |o| o.body == correct_body}.first
+    end
+
     respond_to do |format|
       if @paper.save
         format.html{ redirect_to @paper, notice: 'Paper was successfully created.'  }
@@ -51,6 +56,6 @@ class PapersController < ApplicationController
 
   private
   def paper_params
-    params.require(:paper).permit(:name, questions_attributes:[:id,:question, :correct_option_id, :total_marks,options_attributes:[:id,:body]])
+    params.require(:paper).permit(:name, questions_attributes:[:id,:question, :correct_option_id,:correct_option_body, :total_marks,options_attributes:[:id,:body]])
   end
 end

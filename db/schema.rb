@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180511065351) do
+ActiveRecord::Schema.define(version: 20180516150608) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 20180511065351) do
     t.string "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_options_on_deleted_at"
     t.index ["question_id"], name: "index_options_on_question_id"
   end
 
@@ -47,6 +49,8 @@ ActiveRecord::Schema.define(version: 20180511065351) do
     t.integer "paper_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_questions_on_deleted_at"
   end
 
   create_table "responses", force: :cascade do |t|

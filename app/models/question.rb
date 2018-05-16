@@ -2,6 +2,7 @@ class Question < ApplicationRecord
 #attr_accessible :option_attributes
   OPTIONS_COUNT_MIN = 2
 
+  attribute :correct_option_body, :string, default: "abcd"
   has_many :options , dependent: :destroy
   validates_associated :options
   validates :question, presence: true
@@ -13,6 +14,8 @@ class Question < ApplicationRecord
   has_many :responses
   has_many :images, as: :record, dependent: :destroy
   accepts_nested_attributes_for :images, allow_destroy: true
+  acts_as_paranoid
+
   validate do
     check_options_number
     check_unique_options

@@ -1,9 +1,14 @@
-<div class="container">
-  <h1> Editing User </h1>
+<div class="card" style="width: 20rem;">
+
+
+  <h1 class="card-header"> Editing User </h1>
 
   <%= render 'form', User: @user %>
 
-  <%= link_to 'Show', @user %> |
+  <div class="card-footer">
 
-  <%= link_to 'Back', users_path %>
+    <%= link_to 'Show', @user %> |
+
+    <%= link_to 'Back', users_path %>
+  </div>
 </div>

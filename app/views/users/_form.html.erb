@@ -1,7 +1,7 @@
-<div class="jumbotron">
+<div class="card-body ">
   <%= form_for @user do |f| %>
     <div class="form-row">
-      <div class="form-group col-md-4" >
+      <div class="form-group col-md-8" >
         <div class="field">
           <%= f.label :fname %>
           <%= f.text_field :fname, class: "form-control" %>
@@ -21,11 +21,11 @@
           <%= f.label :email %>
           <%= f.email_field :email, class: "form-control" %>
         </div>
-
+          <br />
         <div class="actions">
           <%= f.submit class: "btn btn-primary" %>
         </div>
       </div>
-    </div
+    </div>
   <% end %>
 </div>

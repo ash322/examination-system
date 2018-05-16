@@ -5,6 +5,7 @@
       <%= f.text_area :question, class:"form-control" %><br />
       <%= f.label :total_marks, "Total Marks" %><br />
       <%= f.text_field :total_marks, class:"form-control" %><br />
+      <%= f.hidden_field :correct_option_body %>
       <br />
       <%#= f.check_box :_destroy %>
       <%#= f.label :_destroy, "Remove Question" %>

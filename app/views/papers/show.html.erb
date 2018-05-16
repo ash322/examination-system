@@ -1,24 +1,38 @@
+<style>
+  .card{
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+</style>
+
 <div class="container">
   <p>
     <strong> Name: </strong>
     <%= @paper.name %>
   </p>
-  <p>
+
+  <div class="row">
     <% @paper.questions.each_with_index do |question,index| %>
-    <strong> <%= index+1 %>: </strong>
-      <%= question.question %><br />
-      <% question.options.each_with_index do |option,i| %>
-      <% i+1 %>
-      <% if i %2 == 0%>
-        <br />
-      <% end %>
-      <span>
-        <%= option.body %>
-      </span>
-      <% end %>
-      <br />
+      <div class="card text-white bg-info col-md-5 mr-3 mb-3">
+
+        <div class="card-header">
+          <strong> <%= index+1 %> :
+            <%= question.question %>
+          </strong>
+        </div>
+          <br />
+        <div class="card-body">
+          <% question.options.each_with_index do |option,i| %>
+            <% if i == 2%>
+              <br />
+            <% end %>
+            <%= option.body %>
+          <% end %>
+        </div>
+      </div>
     <% end %>
-  </p>
+  </div>
   <a title="back" href="/papers"><%=
   image_tag("back.png",:style=>"max-width:40px;min-width:20px") %></a>
 </div>
